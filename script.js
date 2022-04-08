@@ -8,9 +8,24 @@
         // Scissors 
     // Stores choice
 
+function computerPlay() {
+    computer = Math.floor(Math.random() * (3 - 1 + 1)) + 1
+    if (computer === 1) {
+        return "rock";
+    }
+    else if (computer === 2) {
+        return "paper";
+    }
+    else {
+        return "scissors";
+    }
+}
+
+const computerSelection = computerPlay()
+
 // Ask user for rock, paper or scissorss
     // If user enters anything else reprompt
-    // Store player choice in variable
+    // Store player choice in variable 
 
 // Compare choices
     // if computer = rock
