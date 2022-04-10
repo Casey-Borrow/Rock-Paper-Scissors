@@ -25,6 +25,18 @@ function computerPlay() {
     // If user enters anything else reprompt
     // Store player choice in variable 
 
+function playerPlay() {
+    let validSelection = false;
+    while (!validSelection) {
+        let playerSelection = String(prompt("Choose: Rock, Paper or Scissors?"));
+        if (playerSelection.toLowerCase() === "rock" || playerSelection.toLowerCase() === "paper" || playerSelection.toLowerCase() === "scissors") {
+            return playerSelection;
+        }
+    }
+    
+
+}
+
 // Compare choices
     // if computer = rock
         // if player = paper
@@ -55,6 +67,7 @@ function playRound(playerSelection, computerSelection) {
         }
         else {
             console.log("Draw");
+            currentScore();
         }
     }
 
@@ -67,6 +80,7 @@ function playRound(playerSelection, computerSelection) {
         }
         else {
             console.log("Draw");
+            currentScore();
         }
     }
 
@@ -78,7 +92,8 @@ function playRound(playerSelection, computerSelection) {
             computerWin();
         }
         else {
-            console.log("Draw")
+            console.log("Draw");
+            currentScore();
         }
     }
 }
@@ -99,13 +114,16 @@ function computerWin() {
 }
 
 function currentScore(playerScore, computerScore) {
-    console.log(`Player: ${playerScore}`);
-    console.log(`Computer: ${computerScore}`);
+    console.log(`Player: ${playerScore || 0}`);
+    console.log(`Computer: ${computerScore || 0}`);
 }
 
 function game() {
+    playerScore = 0;
+    computerScore = 0;
     for (i = 0; i < 5; i++) {
-        const playerSelection = "rock"
-        const computerSelection = computerPlay();
+        playRound(playerPlay(), computerPlay())
     }
 }
+
+game()
