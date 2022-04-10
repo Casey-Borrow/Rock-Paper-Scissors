@@ -67,7 +67,7 @@ function playRound(playerSelection, computerSelection) {
         }
         else {
             console.log("Draw");
-            currentScore();
+            draw();
         }
     }
 
@@ -80,7 +80,7 @@ function playRound(playerSelection, computerSelection) {
         }
         else {
             console.log("Draw");
-            currentScore();
+            draw();
         }
     }
 
@@ -93,7 +93,7 @@ function playRound(playerSelection, computerSelection) {
         }
         else {
             console.log("Draw");
-            currentScore();
+            draw();
         }
     }
 }
@@ -110,6 +110,11 @@ function playerWin() {
 function computerWin() {
     console.log ("Computer wins the round");
     computerScore += 1;
+    currentScore(playerScore, computerScore);
+}
+
+function draw() {
+    console.log("Draw");
     currentScore(playerScore, computerScore);
 }
 
