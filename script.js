@@ -33,8 +33,6 @@ function playerPlay() {
             return playerSelection;
         }
     }
-    
-
 }
 
 // Compare choices
@@ -66,7 +64,6 @@ function playRound(playerSelection, computerSelection) {
             computerWin();
         }
         else {
-            console.log("Draw");
             draw();
         }
     }
@@ -79,7 +76,6 @@ function playRound(playerSelection, computerSelection) {
             playerWin();
         }
         else {
-            console.log("Draw");
             draw();
         }
     }
@@ -92,7 +88,6 @@ function playRound(playerSelection, computerSelection) {
             computerWin();
         }
         else {
-            console.log("Draw");
             draw();
         }
     }
@@ -102,25 +97,24 @@ let computerScore = 0
 let playerScore = 0
 
 function playerWin() {
-    console.log ("Player wins the round");
+    winner.textContent = "Player wins the round";
     playerScore += 1;
-    document.getElementById('player').textContent = `Player: ${playerScore || 0}`;
+    player.textContent = `Player: ${playerScore}`;
 }
 
 function computerWin() {
-    console.log ("Computer wins the round");
+    winner.textContent = "Computer wins the round";
     computerScore += 1;
-    document.getElementById('computer').textContent = "Computer: " + computerScore;
+    computerSelect.textContent = `Computer: ${computerScore}`;
 }
 
 function draw() {
-    console.log("Draw");
-    currentScore(playerScore, computerScore);
-}
-
-function currentScore(playerScore, computerScore) {
-    console.log(`Player: ${playerScore || 0}`);
-    console.log(`Computer: ${computerScore || 0}`);
+    if (winner.textContent === "Draw") {
+        winner.textContent = "Draw Again"
+    }
+    else {
+        winner.textContent = "Draw"
+    }
 }
 
 window.addEventListener("click", function(e) {
@@ -128,5 +122,6 @@ window.addEventListener("click", function(e) {
     playRound(playerSelection, computerPlay());
 })
 
-
-
+let computerSelect = document.getElementById("computer");
+let player = document.getElementById("player");
+let winner = document.getElementById("winner");
