@@ -104,13 +104,13 @@ let playerScore = 0
 function playerWin() {
     console.log ("Player wins the round");
     playerScore += 1;
-    currentScore(playerScore, computerScore);
+    document.getElementById('player').textContent = `Player: ${playerScore || 0}`;
 }
 
 function computerWin() {
     console.log ("Computer wins the round");
     computerScore += 1;
-    currentScore(playerScore, computerScore);
+    document.getElementById('computer').textContent = "Computer: " + computerScore;
 }
 
 function draw() {
@@ -127,3 +127,6 @@ window.addEventListener("click", function(e) {
     const playerSelection = e.srcElement.id;
     playRound(playerSelection, computerPlay());
 })
+
+
+
