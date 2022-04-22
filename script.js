@@ -123,12 +123,7 @@ function currentScore(playerScore, computerScore) {
     console.log(`Computer: ${computerScore || 0}`);
 }
 
-function game() {
-    playerScore = 0;
-    computerScore = 0;
-    for (i = 0; i < 5; i++) {
-        playRound(playerPlay(), computerPlay())
-    }
-}
-
-game()
+window.addEventListener("click", function(e) {
+    const playerSelection = e.srcElement.id;
+    playRound(playerSelection, computerPlay());
+})
