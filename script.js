@@ -5,7 +5,7 @@
     //else if number = 2
         // Paper
     // else if num = 3
-        // Scissors 
+        // Scissors
     // Stores choice
 
 function computerPlay() {
@@ -23,7 +23,7 @@ function computerPlay() {
 
 // Ask user for rock, paper or scissorss
     // If user enters anything else reprompt
-    // Store player choice in variable 
+    // Store player choice in variable
 
 function playerPlay() {
     let validSelection = false;
@@ -58,7 +58,7 @@ function playerPlay() {
 function playRound(playerSelection, computerSelection) {
     if (computerSelection === "rock") {
         if (playerSelection === "paper") {
-            playerWin();     
+            playerWin();
         }
         else if (playerSelection === "scissors") {
             computerWin();
@@ -109,18 +109,17 @@ function computerWin() {
 }
 
 function draw() {
-    if (winner.textContent === "Draw") {
-        winner.textContent = "Draw Again"
-    }
-    else {
         winner.textContent = "Draw"
-    }
 }
 
-window.addEventListener("click", function(e) {
-    const playerSelection = e.srcElement.id;
-    playRound(playerSelection, computerPlay());
-})
+var btns = document.getElementsByClassName("buttons");
+
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function(e) {
+        const playerSelection = e.srcElement.id;
+        playRound(playerSelection, computerPlay());
+    });
+}
 
 let computerSelect = document.getElementById("computer");
 let player = document.getElementById("player");
