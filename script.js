@@ -25,15 +25,6 @@ function computerPlay() {
     // If user enters anything else reprompt
     // Store player choice in variable
 
-function playerPlay() {
-    let validSelection = false;
-    while (!validSelection) {
-        let playerSelection = String(prompt("Choose: Rock, Paper or Scissors?"));
-        if (playerSelection.toLowerCase() === "rock" || playerSelection.toLowerCase() === "paper" || playerSelection.toLowerCase() === "scissors") {
-            return playerSelection;
-        }
-    }
-}
 
 // Compare choices
     // if computer = rock
@@ -58,58 +49,73 @@ function playerPlay() {
 function playRound(playerSelection, computerSelection) {
     if (computerSelection === "rock") {
         if (playerSelection === "paper") {
-            playerWin();
+            playerWin(playerSelection, computerSelection);
         }
         else if (playerSelection === "scissors") {
-            computerWin();
+            computerWin(playerSelection, computerSelection);
         }
         else {
-            draw();
+            draw(playerSelection, computerSelection);
         }
     }
 
     else if (computerSelection === "paper") {
         if (playerSelection === "rock") {
-            computerWin();
+            computerWin(playerSelection, computerSelection);
         }
         else if (playerSelection === "scissors") {
-            playerWin();
+            playerWin(playerSelection, computerSelection);
         }
         else {
-            draw();
+            draw(playerSelection, computerSelection);
         }
     }
 
     else if (computerSelection === "scissors") {
         if (playerSelection === "rock") {
-            playerWin();
+            playerWin(playerSelection, computerSelection);
         }
         else if (playerSelection === "paper") {
-            computerWin();
+            computerWin(playerSelection, computerSelection);
         }
         else {
-            draw();
+            draw(playerSelection, computerSelection);
         }
     }
-}
+
+    if (playerScore === 5) {
+        let btnsDisable = document.getElementsByClassName.querySelectorAll("button")
+            btns[0].setAttribute("disabled", "disabled")
+        }
+    }
+
 
 let computerScore = 0
 let playerScore = 0
 
-function playerWin() {
-    winner.textContent = "Player wins the round";
+function playerWin(playerSelection, computerSelection) {
+    let playerS = capitalize(playerSelection);
+    let computerS = capitalize(computerSelection);
+    winner.textContent = `${playerS} vs ${computerS}`;
+    winner2.textContent = "Player wins the round";
     playerScore += 1;
     player.textContent = `Player: ${playerScore}`;
 }
 
-function computerWin() {
-    winner.textContent = "Computer wins the round";
+function computerWin(playerSelection, computerSelection) {
+    let playerS = capitalize(playerSelection);
+    let computerS = capitalize(computerSelection);
+    winner.textContent = `${playerS} vs ${computerS}`;
+    winner2.textContent = "Computer wins the round";
     computerScore += 1;
     computerSelect.textContent = `Computer: ${computerScore}`;
 }
 
-function draw() {
-        winner.textContent = "Draw"
+function draw(playerSelection, computerSelection) {
+    let playerS = capitalize(playerSelection);
+    let computerS = capitalize(computerSelection);
+    winner.textContent = `${playerS} vs ${computerS}`;
+    winner2.textContent = "Draw";
 }
 
 var btns = document.getElementsByClassName("buttons");
@@ -119,6 +125,10 @@ for (var i = 0; i < btns.length; i++) {
         const playerSelection = e.srcElement.id;
         playRound(playerSelection, computerPlay());
     });
+}
+function capitalize(s)
+{
+    return s[0].toUpperCase() + s.slice(1);
 }
 
 let computerSelect = document.getElementById("computer");
