@@ -82,11 +82,6 @@ function playRound(playerSelection, computerSelection) {
             draw(playerSelection, computerSelection);
         }
     }
-
-    if (playerScore === 5) {
-        let btnsDisable = document.getElementsByClassName.querySelectorAll("button")
-            btns[0].setAttribute("disabled", "disabled")
-        }
     }
 
 
@@ -99,7 +94,6 @@ function playerWin(playerSelection, computerSelection) {
     winner.textContent = `${playerS} vs ${computerS}`;
     winner2.textContent = "Player wins the round";
     playerScore += 1;
-    player.textContent = `Player: ${playerScore}`;
 }
 
 function computerWin(playerSelection, computerSelection) {
@@ -108,7 +102,6 @@ function computerWin(playerSelection, computerSelection) {
     winner.textContent = `${playerS} vs ${computerS}`;
     winner2.textContent = "Computer wins the round";
     computerScore += 1;
-    computerSelect.textContent = `Computer: ${computerScore}`;
 }
 
 function draw(playerSelection, computerSelection) {
@@ -124,6 +117,9 @@ for (var i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", function(e) {
         const playerSelection = e.srcElement.id;
         playRound(playerSelection, computerPlay());
+        player.textContent = `Player: ${playerScore}`;
+        computerSelect.textContent = `Computer: ${computerScore}`;
+        checkWinner();
     });
 }
 function capitalize(s)
@@ -134,3 +130,16 @@ function capitalize(s)
 let computerSelect = document.getElementById("computer");
 let player = document.getElementById("player");
 let winner = document.getElementById("winner");
+
+function checkWinner() {
+    if (playerScore === 5 || computerScore === 5) {
+        if (playerScore > computerScore) {
+            winner2.textContent = "Player wins the final round! Would you like to play again?"
+        }
+        else {
+            winner2.textContent = "Computer wins the final round! Would you like to play again?"
+        }
+        playerScore = 0
+        computerScore = 0
+        }
+    }

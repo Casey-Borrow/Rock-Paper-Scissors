@@ -1,5 +1,35 @@
+/* Colours
+Eggplant 4B3B47
+Lilac B6A6CA
+Pale Spring Bud CFD2B2
+Pine Green 157A6E
+Brown Sugar B4654A */
+
+
 #container {
     display: flex;
     align-items:  center;
     flex-direction: column;
+}
+
+body {
+    background-color: #DBCBD8;
+    color: #564787;
+}
+
+#rock, #paper, #scissors{
+    background-color: #564787;
+    border: none;
+    color: #F2FDFF;
+    padding: 15px 30px;
+    text-decoration: none;
+}
+
+#score {
+    display: flex;
+    gap: 10px;
+}
+
+#player, #computer {
+    padding: 15px 30px;
 }
